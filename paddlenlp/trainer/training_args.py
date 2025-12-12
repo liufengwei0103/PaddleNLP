@@ -1192,6 +1192,11 @@ class TrainingArguments:
         },
     )
 
+    save_replicas: Optional[bool] = field(
+        default=False,
+        metadata={"help": "Whether to save replicas cross files in distributed save load system."},
+    )
+
     def __post_init__(self):
         world_size = paddle.distributed.get_world_size()
         if in_auto_parallel_align_mode():
